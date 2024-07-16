@@ -1,1 +1,3 @@
 POLL_INTERVAL_SECONDS = 5
+
+DATA_ROOT = "data/"

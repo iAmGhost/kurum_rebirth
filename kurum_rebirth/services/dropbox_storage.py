@@ -42,7 +42,7 @@ class DropboxStorage(Storage):
             [sg.Input(key="access_code", disabled=True)],
             [sg.Button("Submit", key="-SUBMIT-", disabled=True)],
         ]
-        window = sg.Window("Dropbox Login", layout, modal=True, finalize=True, icon="assets/Kurum_512px.ico")
+        window = sg.Window("Dropbox Login", layout, modal=True, finalize=True, icon="data/assets/Kurum_512px.ico")
         window.bring_to_front()
 
         while True:

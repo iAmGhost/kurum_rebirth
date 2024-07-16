@@ -41,6 +41,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='assets/Kurum_512px.ico',
+    icon='data/assets/Kurum_512px.ico',
     version='kurumrebirth_gui.txt',
 )

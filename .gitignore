@@ -1,7 +1,7 @@
-data/
-tmp/
-user_settings/
-sync_configs/
+
+data/last_sync/
+data/sync_configs/
+data/temp/
 dist/
 build/
 *.pyc

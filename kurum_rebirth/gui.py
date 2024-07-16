@@ -37,7 +37,7 @@ def main():
               [configure_storage_button, sg.Button('Hide Window'), sg.Button('Exit')]]
 
     window = sg.Window(f'KurumRebirth (v{VERSION})', layout, finalize=True, enable_close_attempted_event=True,
-                       icon="assets/Kurum_512px.ico")
+                       icon="data/assets/Kurum_512px.ico")
     window.hide()
 
     init_logging()
@@ -65,7 +65,7 @@ def main():
 
     window.start_thread(poll_sync_service, ('-SYNC_SERVICE_START-', '-SYNC_SERVICE_END-'))
 
-    tray = SystemTray(menu, single_click_events=False, window=window, tooltip=tooltip, icon="assets/Kurum_512px.png")
+    tray = SystemTray(menu, single_click_events=False, window=window, tooltip=tooltip, icon="data/assets/Kurum_512px.png")
     tray.show_icon()
 
     while True:

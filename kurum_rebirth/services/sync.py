@@ -10,6 +10,7 @@ from pydantic_yaml import parse_yaml_raw_as
 
 from kurum_rebirth.services.storage import Storage
 from kurum_rebirth.schema import SyncConfig, InitTask
+from kurum_rebirth.const import DATA_ROOT
 
 
 logger = logging.getLogger(__name__)
@@ -47,7 +48,7 @@ class SyncService(metaclass=ABCMeta):
         self.check_restore()
 
     def scan_config(self):
-        for config_path in Path("sync_configs").glob("*.yaml"):
+        for config_path in Path(f"{DATA_ROOT}/sync_configs").glob("*.yaml"):
             logger.info("Adding Config: %s", config_path)
 
             with config_path.open('r', encoding='utf-8') as f:
@@ -56,7 +57,7 @@ class SyncService(metaclass=ABCMeta):
                 self.add_sync_config(sync_config)
 
     def get_local_last_sync(self, key: str) -> int:
-        path = Path(f"data/{key}_last_sync")
+        path = Path(f"{DATA_ROOT}/last_sync/{key}")
 
         if not path.exists():
             return -1
@@ -65,7 +66,7 @@ class SyncService(metaclass=ABCMeta):
             return int(f.read())
 
     def update_local_last_sync(self, key: str, value: int):
-        path = Path(f"data/{key}_last_sync")
+        path = Path(f"{DATA_ROOT}/last_sync/{key}")
 
         path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -144,7 +145,7 @@ class SyncService(metaclass=ABCMeta):
 
             logger.info(f"Base Path: {base_path}")
 
-            temp_path = Path(f"tmp/backup/{config._key}/{task.name}.zip")
+            temp_path = Path(f"{DATA_ROOT}/temp/backup/{config._key}/{task.name}.zip")
             temp_path.parent.mkdir(parents=True, exist_ok=True)
 
             logger.info(f"Packing...: {str(temp_path)}")
@@ -180,7 +181,7 @@ class SyncService(metaclass=ABCMeta):
         for task in config.platform[self.platform].restore_tasks:
             logger.info(f"Running restore task: {task.name}")
 
-            temp_path = Path(f"tmp/restore/{config._key}/{task.name}.zip")
+            temp_path = Path(f"{DATA_ROOT}/temp/restore/{config._key}/{task.name}.zip")
             temp_path.parent.mkdir(parents=True, exist_ok=True)
 
             source_path = f"/backups/{config._key}/{task.name}.zip"

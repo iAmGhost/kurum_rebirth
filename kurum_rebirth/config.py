@@ -5,7 +5,7 @@ from pydantic_yaml import parse_yaml_raw_as, to_yaml_str
 
 _config = KurumConfig()
 
-config_path = Path("config.yaml")
+config_path = Path("data/config.yaml")
 
 
 def get_config() -> KurumConfig:
