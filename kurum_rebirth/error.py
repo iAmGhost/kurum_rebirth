@@ -1,0 +1,4 @@
+
+
+class KurumError(Exception):
+    pass

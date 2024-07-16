@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "kurum-rebirth"
+version = "0.1.0"
+description = ""
+authors = ["Daehan Kim <really@iamghost.kr>"]
+readme = "README.md"
+packages = [{include = "kurum_rebirth"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+pysimplegui = "^4.60.5"
+dropbox = "^11.36.2"
+pydantic = "^2.1.1"
+psgtray = "^1.0.2"
+pydantic-yaml = "^1.1.1"
+psutil = "^5.9.5"
+pendulum = "^2.1.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

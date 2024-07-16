@@ -1,0 +1,8 @@
+data/
+tmp/
+user_settings/
+sync_configs/
+dist/
+build/
+*.pyc
+*.exe
